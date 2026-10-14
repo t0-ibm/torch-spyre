@@ -287,6 +287,12 @@ void SpyreStream::launchHostCompute(flex::HostComputeParams* params) const {
   resolveRuntimeHandle()->launchHostCompute(params);
 }
 
+flex::HostComputeBuffer* SpyreStream::prepareHostCompute(
+    flex::HostComputeParams* params) const {
+  RECORD_FUNCTION("prepare::HostCompute", {});
+  return resolveRuntimeHandle()->launchOperation(params);
+}
+
 void SpyreStream::launch(const JobPlan& plan,
                          const std::vector<at::Tensor>& args,
                          std::vector<SymbolicArg> symbolic_args) const {
