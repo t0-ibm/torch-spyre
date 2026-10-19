@@ -81,8 +81,8 @@ void AiuptiActivityApi::bufferRequested(uint8_t** buffer, size_t* size,
   std::lock_guard<std::mutex> guard(mutex_);
   if (allocatedAiuTraceBuffers_.size() >= maxAiuBufferCount_) {
     stopCollection = true;
-    LOG(WARNING) << "Exceeded max AIU buffer count ("
-                 << allocatedAiuTraceBuffers_.size() << " > "
+    LOG(WARNING) << "Exceeded or equaled max AIU buffer count ("
+                 << allocatedAiuTraceBuffers_.size() << " >= "
                  << maxAiuBufferCount_ << ") - terminating tracing";
   }
 
